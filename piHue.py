@@ -97,7 +97,7 @@ class MainView(QtWidgets.QMainWindow):
 class ScreenSaver(QtWidgets.QMainWindow):
 	def __init__(self, parent=None):
 		super(ScreenSaver, self).__init__()
-		
+
 		bgImg = QImage("./img/bg.png")
 		
 		sImage = bgImg.scaled(QSize(800,480))
