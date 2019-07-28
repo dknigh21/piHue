@@ -163,7 +163,7 @@ border-radius: 15px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(231, 223, 221, 50%);
+     <string notr="true">background-color: rgb(231, 223, 221);
 border-style: outset;
 border-radius: 15px;</string>
     </property>
@@ -303,11 +303,17 @@ border-radius: 15px;</string>
       <x>20</x>
       <y>330</y>
       <width>761</width>
-      <height>20</height>
+      <height>21</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(152, 129, 152)</string>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>2</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>

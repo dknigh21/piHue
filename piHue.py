@@ -32,7 +32,7 @@ class MainView(QtWidgets.QMainWindow):
 		self.setPalette(palette)
 		
 		self.timer = QTimer()
-		#self.timer.timeout.connect(lambda: self.screenSaver())
+		self.timer.timeout.connect(lambda: self.screenSaver())
 		
 		uic.loadUi("pyHue.ui", self)
 		self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
@@ -73,7 +73,7 @@ class MainView(QtWidgets.QMainWindow):
 		self.btnDanielOffice.setIcon(QtGui.QIcon('./icons/danielOffice.png'))
 		#self.btnDanielOffice.clicked.connect(lambda: self.roomSettings(danielOfficeLights))
 		
-		self.timer.start(5000)
+		self.timer.start(300000)
 		
 		self.show()
 		
@@ -95,8 +95,10 @@ class MainView(QtWidgets.QMainWindow):
 				l.on = False
 	
 	def screenSaver(self):
+		self.timer.stop()
 		self.dialog = ScreenSaver(self)
 		self.dialog.show()
+		self.close()
 		
 class ScreenSaver(QtWidgets.QMainWindow):
 	def __init__(self, parent=None):
@@ -127,7 +129,7 @@ class ScreenSaver(QtWidgets.QMainWindow):
 		self.lblDate.setText(datetime.datetime.now().strftime("%b %d %Y"))
 		
 		self.lblClock = self.findChild(QtWidgets.QLabel, 'lblClock')
-		self.lblClock.setText(datetime.datetime.now().strftime("%#I:%M"))
+		self.lblClock.setText(datetime.datetime.now().strftime("%-I:%M"))
 		
 		self.lblDayFcst1 = self.findChild(QtWidgets.QLabel, 'lblDayFcst1')
 		self.lblDayFcst2 = self.findChild(QtWidgets.QLabel, 'lblDayFcst2')
@@ -173,10 +175,12 @@ class ScreenSaver(QtWidgets.QMainWindow):
 		self.updateDateTime()
 		
 	def returnToMain(self):
+		self.dialog = MainView()
+		self.dialog.show()
 		self.close()
 		
 	def updateDateTime(self):
-		self.lblClock.setText(datetime.datetime.now().strftime("%#I:%M"))
+		self.lblClock.setText(datetime.datetime.now().strftime("%-I:%M"))
 		self.lblDate.setText(datetime.datetime.now().strftime("%b %d %Y"))
 		
 	def updateWeather(self):
@@ -196,7 +200,7 @@ class ScreenSaver(QtWidgets.QMainWindow):
 			temp_icon.loadFromData(w.getIconImage(current_forecast[i]["weather"][0]["icon"]))
 			self.dayForecastIcons[i].setPixmap(QtGui.QPixmap(temp_icon))
 			self.dayForecastTemps[i].setText(str(int(current_forecast[i]["main"]["temp"])) + u'\N{DEGREE SIGN}')
-			self.dayForecastTimes[i].setText(time.strftime("%#I %p", time.gmtime(current_forecast[i]["dt"])))
+			self.dayForecastTimes[i].setText(time.strftime("%-I %p", time.gmtime(current_forecast[i]["dt"])))
 			
 		current_weather_icon = QtGui.QImage()
 		current_weather_icon.loadFromData(current_weather[2])
