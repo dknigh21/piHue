@@ -35,41 +35,43 @@
    <widget class="QLabel" name="lblClock">
     <property name="geometry">
      <rect>
-      <x>0</x>
-      <y>100</y>
-      <width>801</width>
+      <x>50</x>
+      <y>60</y>
+      <width>421</width>
       <height>161</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>SignPainter HouseSlant</family>
+      <family>Montserrat</family>
       <pointsize>125</pointsize>
+      <weight>75</weight>
+      <bold>true</bold>
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: #E7DFDD</string>
+     <string notr="true">color: #FFFFFF</string>
     </property>
     <property name="text">
      <string>16:56</string>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QLabel" name="lblDate">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>40</y>
-      <width>391</width>
-      <height>71</height>
+      <x>50</x>
+      <y>30</y>
+      <width>201</width>
+      <height>51</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>SignPainter HouseScript</family>
-      <pointsize>48</pointsize>
+      <family>Montserrat</family>
+      <pointsize>28</pointsize>
      </font>
     </property>
     <property name="styleSheet">
@@ -77,6 +79,609 @@
     </property>
     <property name="text">
      <string>Jul 26 2019</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblCurrentTemp">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>40</y>
+      <width>171</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>72</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF;</string>
+    </property>
+    <property name="text">
+     <string>87</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignBottom|Qt::AlignHCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblweatherIcon">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>20</y>
+      <width>120</width>
+      <height>120</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblDayFcst1">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>150</y>
+      <width>91</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblDayFcst2">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>150</y>
+      <width>91</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblDayFcst3">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>150</y>
+      <width>91</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>18</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblDayFcstTemp1">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>210</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblDayFcstTemp2">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>210</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblDayFcstTemp3">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>210</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblDayFcstTime3">
+    <property name="geometry">
+     <rect>
+      <x>680</x>
+      <y>120</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblDayFcstTime1">
+    <property name="geometry">
+     <rect>
+      <x>480</x>
+      <y>120</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblDayFcstTime2">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>120</y>
+      <width>91</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblWkFcst1">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>320</y>
+      <width>111</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblWkFcst2">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>320</y>
+      <width>111</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblWkFcst3">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>320</y>
+      <width>111</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblWkFcst4">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>320</y>
+      <width>111</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblWkFcst5">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>320</y>
+      <width>111</width>
+      <height>111</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblWkFcstDay1">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>310</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblWkFcstDay4">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>310</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblWkFcstDay2">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>310</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblWkFcstDay5">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>310</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblWkFcstDay3">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>310</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>12</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblWkFcstTemp1">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>400</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblWkFcstTemp2">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>400</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblWkFcstTemp5">
+    <property name="geometry">
+     <rect>
+      <x>640</x>
+      <y>400</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblWkFcstTemp4">
+    <property name="geometry">
+     <rect>
+      <x>490</x>
+      <y>400</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QLabel" name="lblWkFcstTemp3">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>400</y>
+      <width>111</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Montserrat</family>
+      <pointsize>16</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #FFFFFF</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnReturnToMain">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>800</width>
+      <height>480</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="flat">
+     <bool>true</bool>
     </property>
    </widget>
   </widget>
@@ -86,7 +691,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

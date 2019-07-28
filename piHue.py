@@ -3,7 +3,8 @@ from PyQt5.QtCore import * #QSize
 from PyQt5.QtWidgets import * #QApplication, QWidget, QPushButton, QMessageBox, QSlider
 from PyQt5.QtGui import * #QImage, QPalette, QBrush
 from phue import Bridge
-import sys, time, datetime
+import sys, time, datetime, requests
+from weather import Weather
 
 b = Bridge("192.168.50.175")
 b.connect()
@@ -17,6 +18,8 @@ kitchenLights = [	allLights['K1'],
 					allLights['K4'] ]
 
 livingRoomLights = [ allLights['Lamp'] ]
+
+w = Weather()
 
 class MainView(QtWidgets.QMainWindow):
 	def __init__(self):
@@ -34,6 +37,7 @@ class MainView(QtWidgets.QMainWindow):
 		uic.loadUi("pyHue.ui", self)
 		self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
 		
+			
 		#Button Connections
 		self.btnLivingRoom = self.findChild(QtWidgets.QPushButton, 'btnLivingRoom')
 		self.btnLivingRoom.setIcon(QtGui.QIcon('./icons/livingroom.png'))
@@ -97,7 +101,7 @@ class MainView(QtWidgets.QMainWindow):
 class ScreenSaver(QtWidgets.QMainWindow):
 	def __init__(self, parent=None):
 		super(ScreenSaver, self).__init__()
-
+		
 		bgImg = QImage("./img/bg.png")
 		
 		sImage = bgImg.scaled(QSize(800,480))
@@ -108,31 +112,98 @@ class ScreenSaver(QtWidgets.QMainWindow):
 		uic.loadUi("screenSaver.ui", self)
 		self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
 		
-		self.timer = QTimer()
-		self.timer.timeout.connect(self.updateDateTime)
-		self.timer.start(60000)
+		self.clockTimer = QTimer()
+		self.clockTimer.timeout.connect(self.updateDateTime)
+		self.clockTimer.start(60000)
+		
+		self.weatherTimer = QTimer()
+		self.weatherTimer.timeout.connect(self.updateWeather)
+		self.weatherTimer.start(600000)
+		
+		self.lblCurrentTemp = self.findChild(QtWidgets.QLabel, 'lblCurrentTemp')
+		self.lblWeatherIcon = self.findChild(QtWidgets.QLabel, 'lblweatherIcon')
 		
 		self.lblDate = self.findChild(QtWidgets.QLabel, 'lblDate')
-		self.lblClock = self.findChild(QtWidgets.QLabel, 'lblClock')
-		self.lblClock.setText(datetime.datetime.now().strftime("%H:%M"))
 		self.lblDate.setText(datetime.datetime.now().strftime("%b %d %Y"))
 		
-	def updateDateTime(self):
-		self.lblClock.setText(datetime.datetime.now().strftime("%H:%M"))
-		self.lblDate.setText(blur(self, datetime.datetime.now().strftime("%b %d %Y")))
+		self.lblClock = self.findChild(QtWidgets.QLabel, 'lblClock')
+		self.lblClock.setText(datetime.datetime.now().strftime("%#I:%M"))
 		
-	def blur(self, pixmap):
-		effect = QtWidgets.QGraphicsBlurEffect()
-		scene = QtWidgets.QGraphicsScene()
-		item = QtWidgets.QGraphicsPixmapItem(pixmap)
-		scene.addItem(item)
-		item.setGraphicsEffect(effect)
-		image = pixmap.toImage()
-		image.fill(QtCore.Qt.transparent)
-		painter = QtGui.QPainter(image)
-		scene.render(painter)
-		painter.end()
-		return QtGui.QPixmap(image)
+		self.lblDayFcst1 = self.findChild(QtWidgets.QLabel, 'lblDayFcst1')
+		self.lblDayFcst2 = self.findChild(QtWidgets.QLabel, 'lblDayFcst2')
+		self.lblDayFcst3 = self.findChild(QtWidgets.QLabel, 'lblDayFcst3')
+		
+		self.lblDayFcstTemp1 = self.findChild(QtWidgets.QLabel, 'lblDayFcstTemp1')
+		self.lblDayFcstTemp2 = self.findChild(QtWidgets.QLabel, 'lblDayFcstTemp2')
+		self.lblDayFcstTemp3 = self.findChild(QtWidgets.QLabel, 'lblDayFcstTemp3')
+		
+		self.lblDayFcstTime1 = self.findChild(QtWidgets.QLabel, 'lblDayFcstTime1')
+		self.lblDayFcstTime2 = self.findChild(QtWidgets.QLabel, 'lblDayFcstTime2')
+		self.lblDayFcstTime3 = self.findChild(QtWidgets.QLabel, 'lblDayFcstTime3')
+		
+		self.lblWkFcst1 = self.findChild(QtWidgets.QLabel, 'lblWkFcst1')
+		self.lblWkFcst2 = self.findChild(QtWidgets.QLabel, 'lblWkFcst2')
+		self.lblWkFcst3 = self.findChild(QtWidgets.QLabel, 'lblWkFcst3')
+		self.lblWkFcst4 = self.findChild(QtWidgets.QLabel, 'lblWkFcst4')
+		self.lblWkFcst5 = self.findChild(QtWidgets.QLabel, 'lblWkFcst5')
+		
+		self.lblWkFcstDay1 = self.findChild(QtWidgets.QLabel, 'lblWkFcstDay1')
+		self.lblWkFcstDay2 = self.findChild(QtWidgets.QLabel, 'lblWkFcstDay2')
+		self.lblWkFcstDay3 = self.findChild(QtWidgets.QLabel, 'lblWkFcstDay3')
+		self.lblWkFcstDay4 = self.findChild(QtWidgets.QLabel, 'lblWkFcstDay4')
+		self.lblWkFcstDay5 = self.findChild(QtWidgets.QLabel, 'lblWkFcstDay5')
+		
+		self.lblWkFcstTemp1 = self.findChild(QtWidgets.QLabel, 'lblWkFcstTemp1')
+		self.lblWkFcstTemp2 = self.findChild(QtWidgets.QLabel, 'lblWkFcstTemp2')
+		self.lblWkFcstTemp3 = self.findChild(QtWidgets.QLabel, 'lblWkFcstTemp3')
+		self.lblWkFcstTemp4 = self.findChild(QtWidgets.QLabel, 'lblWkFcstTemp4')
+		self.lblWkFcstTemp5 = self.findChild(QtWidgets.QLabel, 'lblWkFcstTemp5')
+		
+		self.wkForecastIcons = [self.lblWkFcst1, self.lblWkFcst2, self.lblWkFcst3, self.lblWkFcst4, self.lblWkFcst5]
+		self.wkForecastDays = [self.lblWkFcstDay1, self.lblWkFcstDay2, self.lblWkFcstDay3, self.lblWkFcstDay4, self.lblWkFcstDay5]
+		self.wkForecastTemps = [self.lblWkFcstTemp1, self.lblWkFcstTemp2, self.lblWkFcstTemp3, self.lblWkFcstTemp4, self.lblWkFcstTemp5]
+		self.dayForecastIcons = [self.lblDayFcst1, self.lblDayFcst2, self.lblDayFcst3]
+		self.dayForecastTemps = [self.lblDayFcstTemp1, self.lblDayFcstTemp2, self.lblDayFcstTemp3]
+		self.dayForecastTimes = [self.lblDayFcstTime1, self.lblDayFcstTime2, self.lblDayFcstTime3]
+		
+		self.btnReturn = self.findChild(QtWidgets.QPushButton, 'btnReturnToMain')
+		self.btnReturn.clicked.connect(self.returnToMain)
+		
+		self.updateWeather()
+		self.updateDateTime()
+		
+	def returnToMain(self):
+		self.close()
+		
+	def updateDateTime(self):
+		self.lblClock.setText(datetime.datetime.now().strftime("%#I:%M"))
+		self.lblDate.setText(datetime.datetime.now().strftime("%b %d %Y"))
+		
+	def updateWeather(self):
+		current_weather = w.getCurrentWeather()
+		week_forecast = w.getWeekForecast()
+		current_forecast = w.getDayForecast()
+		
+		for i in range(0, len(week_forecast)):
+			temp_icon = QtGui.QImage()
+			temp_icon.loadFromData(w.getIconImage(week_forecast[i]["weather"][0]["icon"]))
+			self.wkForecastIcons[i].setPixmap(QtGui.QPixmap(temp_icon))
+			self.wkForecastDays[i].setText(time.strftime("%a", time.gmtime(week_forecast[i]["dt"])))
+			self.wkForecastTemps[i].setText(str(int(week_forecast[i]["main"]["temp"])) + u'\N{DEGREE SIGN}')
+			
+		for i in range(0,3):
+			temp_icon = QtGui.QImage()
+			temp_icon.loadFromData(w.getIconImage(current_forecast[i]["weather"][0]["icon"]))
+			self.dayForecastIcons[i].setPixmap(QtGui.QPixmap(temp_icon))
+			self.dayForecastTemps[i].setText(str(int(current_forecast[i]["main"]["temp"])) + u'\N{DEGREE SIGN}')
+			self.dayForecastTimes[i].setText(time.strftime("%#I %p", time.gmtime(current_forecast[i]["dt"])))
+			
+		current_weather_icon = QtGui.QImage()
+		current_weather_icon.loadFromData(current_weather[2])
+		
+		self.lblCurrentTemp.setText(current_weather[0])
+		self.lblWeatherIcon.setPixmap(QtGui.QPixmap(current_weather_icon))
+
 
 class RoomParams(QtWidgets.QMainWindow):
 	def __init__(self, parent=None, currentLights=None):
