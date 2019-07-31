@@ -43,6 +43,10 @@ class MainView(QtWidgets.QMainWindow):
         
             
         #Button Connections
+		
+        self.btnClose = self.findChild(QtWidgets.QPushButton, 'btnClose')
+        self.btnClose.clicked.connect(self.close())
+		
         self.btnLivingRoom = self.findChild(QtWidgets.QPushButton, 'btnLivingRoom')
         self.btnLivingRoom.setIcon(QtGui.QIcon('./icons/livingroom.png'))
         self.btnLivingRoom.clicked.connect(lambda: self.roomSettings(livingRoomLights))
@@ -117,9 +121,6 @@ class ScreenSaver(QtWidgets.QMainWindow):
         
         uic.loadUi("screenSaver.ui", self)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        
-		self.btnClose = self.findChild(QtWidgets.QPushButton, 'btnClose')
-		self.btnClose.clicked.connect(self.close())
 		
         self.clockTimer = QTimer()
         self.clockTimer.timeout.connect(self.updateDateTime)
