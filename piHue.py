@@ -24,7 +24,8 @@ w = Weather()
 class MainView(QtWidgets.QMainWindow):
 	def __init__(self):
 		super(MainView, self).__init__()
-		
+		self.statusBar().setSizeGripEnabled(False)
+		self.setFixedSize(self.sizeHint())
 		bgImg = QImage("./img/bg.png")
 		sImage = bgImg.scaled(QSize(800,480))
 		palette = QPalette()
