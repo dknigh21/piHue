@@ -118,6 +118,9 @@ class ScreenSaver(QtWidgets.QMainWindow):
         uic.loadUi("screenSaver.ui", self)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
         
+		self.btnClose = self.findChild(QtWidgets.QPushButton, 'btnClose')
+		self.btnClose.clicked.connect(self.close())
+		
         self.clockTimer = QTimer()
         self.clockTimer.timeout.connect(self.updateDateTime)
         self.clockTimer.start(60000)
