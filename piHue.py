@@ -26,11 +26,14 @@ class MainView(QtWidgets.QMainWindow):
         super(MainView, self).__init__()
         self.statusBar().setSizeGripEnabled(False)
         self.setFixedSize(self.sizeHint())
-        bgImg = QImage("./img/bg.png")
+
+        """bgImg = QImage("./img/bg.png")
         sImage = bgImg.scaled(QSize(800,480))
         palette = QPalette()
         palette.setBrush(10, QBrush(sImage))                     
-        self.setPalette(palette)
+        self.setPalette(palette)"""
+
+
         
         self.shortcut = QShortcut(QKeySequence("Ctrl+Q"), self)
         self.shortcut.activated.connect(self.close)
@@ -40,7 +43,7 @@ class MainView(QtWidgets.QMainWindow):
         
         uic.loadUi("pyHue.ui", self)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        
+                
             
         #Button Connections
 		
@@ -71,6 +74,7 @@ class MainView(QtWidgets.QMainWindow):
         
         self.btnStudio = self.findChild(QtWidgets.QPushButton, 'btnStudio')
         self.btnStudio.setIcon(QtGui.QIcon('./icons/studio.png'))
+        self.btnStudio.setStyleSheet("background-color: #9974AA; border-radius: 15px;")
         self.btnStudio.clicked.connect(self.screenSaver)
         
         self.btnDanaOffice = self.findChild(QtWidgets.QPushButton, 'btnDanaOffice')
@@ -82,6 +86,10 @@ class MainView(QtWidgets.QMainWindow):
         #self.btnDanielOffice.clicked.connect(lambda: self.roomSettings(danielOfficeLights))
         
         self.timer.start(300000)
+
+        for b in self.findChildren(QtWidgets.QPushButton):
+            b.setStyleSheet("QPushButton{background-color: #f3e9d2; border-radius: 15px;}"
+                "QPushButton:pressed{background-color: #c6dabf}")
         
         self.show()
         
@@ -112,12 +120,12 @@ class ScreenSaver(QtWidgets.QMainWindow):
     def __init__(self, parent=None):
         super(ScreenSaver, self).__init__()
         
-        bgImg = QImage("./img/bg.png")
+        """bgImg = QImage("./img/bg.png")
         
         sImage = bgImg.scaled(QSize(800,480))
         palette = QPalette()
         palette.setBrush(10, QBrush(sImage))                     
-        self.setPalette(palette)
+        self.setPalette(palette)"""
         
         uic.loadUi("screenSaver.ui", self)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
@@ -242,9 +250,11 @@ class RoomParams(QtWidgets.QMainWindow):
         
         self.btnOn = self.findChild(QtWidgets.QPushButton, 'btnOn')
         self.btnOn.setIcon(QtGui.QIcon('./icons/lightOn.png'))
+        self.btnOn.clicked.connect(self.lightsOn)
         
         self.btnOff = self.findChild(QtWidgets.QPushButton, 'btnOff')
         self.btnOff.setIcon(QtGui.QIcon('./icons/lightOff.png'))
+        self.btnOff.clicked.connect(self.lightsOff)
         
     def changeBrightness(self):
         for l in self.currentLights:
@@ -252,6 +262,14 @@ class RoomParams(QtWidgets.QMainWindow):
         
     def returnToMain(self):
         self.close()
+
+    def lightsOn(self):
+        for l in self.currentLights:
+            l.on = True
+
+    def lightsOff(self):
+        for l in self.currentLights:
+            l.on = False
         
 
 

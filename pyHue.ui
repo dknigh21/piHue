@@ -47,7 +47,7 @@
    <double>1.000000000000000</double>
   </property>
   <property name="styleSheet">
-   <string notr="true">/*background-color: #0E0B16;
+   <string notr="true">background-color: #114b5f;
 </string>
   </property>
   <property name="unifiedTitleAndToolBarOnMac">
@@ -112,14 +112,12 @@ border-radius: 15px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #E7DFDD;
+     <string notr="true">background-color: orange;
+border-style: outset;
+border-width: 2px;
 border-radius: 15px;
-
-QPushButton::pressed {
-	border-color: #A239CA;
-	border-style: outset;
-	border-width: 3px;
-}
+border-color: black;
+padding: 4px;
 </string>
     </property>
     <property name="text">
@@ -319,25 +317,6 @@ border-radius: 15px;</string>
      <enum>Qt::Horizontal</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnReturnToMain">
-    <property name="enabled">
-     <bool>true</bool>
-    </property>
-    <property name="geometry">
-     <rect>
-      <x>-50</x>
-      <y>210</y>
-      <width>800</width>
-      <height>480</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-    <property name="flat">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btnClose">
     <property name="geometry">
      <rect>
@@ -361,7 +340,7 @@ border-radius: 15px;</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
