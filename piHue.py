@@ -74,7 +74,6 @@ class MainView(QtWidgets.QMainWindow):
         
         self.btnStudio = self.findChild(QtWidgets.QPushButton, 'btnStudio')
         self.btnStudio.setIcon(QtGui.QIcon('./icons/studio.png'))
-        self.btnStudio.setStyleSheet("background-color: #9974AA; border-radius: 15px;")
         self.btnStudio.clicked.connect(self.screenSaver)
         
         self.btnDanaOffice = self.findChild(QtWidgets.QPushButton, 'btnDanaOffice')
