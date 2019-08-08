@@ -32,8 +32,6 @@ class MainView(QtWidgets.QMainWindow):
         palette = QPalette()
         palette.setBrush(10, QBrush(sImage))                     
         self.setPalette(palette)"""
-
-
         
         self.shortcut = QShortcut(QKeySequence("Ctrl+Q"), self)
         self.shortcut.activated.connect(self.close)
@@ -84,6 +82,9 @@ class MainView(QtWidgets.QMainWindow):
         self.btnDanielOffice.setIcon(QtGui.QIcon('./icons/danielOffice.png'))
         #self.btnDanielOffice.clicked.connect(lambda: self.roomSettings(danielOfficeLights))
         
+        self.btnParty = self.findChild(QtWidgets.QPushButton, 'btnParty')
+        self.btnParty.setIcon(QtGui.QIcon('./icons/icons8-party-balloons-100.png'))
+        self.btnParty.clicked[bool].connect(self.partyMode)
         self.timer.start(300000)
 
         for b in self.findChildren(QtWidgets.QPushButton):
@@ -93,7 +94,18 @@ class MainView(QtWidgets.QMainWindow):
         self.show()
         
         
-        
+    def partyMode(self, checked):
+
+        if checked:
+
+            for l in b.lights:
+                l.effect = "colorloop"
+
+        if not checked:
+            
+            for l in b.lights:
+                l.effect = "none"
+
     def roomSettings(self, currentLights):
         
         self.dialog = RoomParams(self, currentLights)

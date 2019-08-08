@@ -250,7 +250,7 @@ border-radius: 15px;</string>
    <widget class="QPushButton" name="btnAllOff">
     <property name="geometry">
      <rect>
-      <x>440</x>
+      <x>420</x>
       <y>360</y>
       <width>161</width>
       <height>91</height>
@@ -330,6 +330,33 @@ border-radius: 15px;</string>
      <string/>
     </property>
     <property name="flat">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnParty">
+    <property name="geometry">
+     <rect>
+      <x>220</x>
+      <y>360</y>
+      <width>161</width>
+      <height>91</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: #E7DFDD;
+border-style: outset;
+border-radius: 15px;</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>75</width>
+      <height>75</height>
+     </size>
+    </property>
+    <property name="checkable">
      <bool>true</bool>
     </property>
    </widget>
