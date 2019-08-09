@@ -47,7 +47,7 @@
    <double>1.000000000000000</double>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #114b5f;
+   <string notr="true">background-color: #161616;
 </string>
   </property>
   <property name="unifiedTitleAndToolBarOnMac">
@@ -57,16 +57,30 @@
    <widget class="QPushButton" name="btnBedroom">
     <property name="geometry">
      <rect>
-      <x>60</x>
-      <y>100</y>
+      <x>40</x>
+      <y>10</y>
       <width>151</width>
-      <height>141</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #E7DFDD;
-border-style: outset;
-border-radius: 15px;</string>
+     <string notr="true">QPushButton{
+	background-color: #161616;
+	border-width: 3px;
+	border-color: #3a3a3a;
+	border-style: outset;
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	background-color: #ffffff;
+}
+
+QPushButton:checked{
+	background-color: #ffffff;
+	border-style: inset;
+	border-color: #9557c6;
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -76,21 +90,38 @@ border-radius: 15px;</string>
       <width>75</width>
       <height>75</height>
      </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="btnKitchen">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>20</y>
+      <x>40</x>
+      <y>120</y>
       <width>151</width>
-      <height>141</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #E7DFDD;
-border-style: outset;
-border-radius: 15px;</string>
+     <string notr="true">QPushButton{
+	background-color: #161616;
+	border-width: 3px;
+	border-color: #3a3a3a;
+	border-style: outset;
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	background-color: #ffffff;
+}
+
+QPushButton:checked{
+	background-color: #ffffff;
+	border-style: inset;
+	border-color: #9557c6;
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -100,25 +131,38 @@ border-radius: 15px;</string>
       <width>75</width>
       <height>75</height>
      </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="btnLivingRoom">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>180</y>
+      <x>40</x>
+      <y>230</y>
       <width>151</width>
-      <height>141</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: orange;
-border-style: outset;
-border-width: 2px;
-border-radius: 15px;
-border-color: black;
-padding: 4px;
-</string>
+     <string notr="true">QPushButton{
+	background-color: #161616;
+	border-width: 3px;
+	border-color: #3a3a3a;
+	border-style: outset;
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	background-color: #ffffff;
+}
+
+QPushButton:checked{
+	background-color: #ffffff;
+	border-style: inset;
+	border-color: #9557c6;
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -128,42 +172,41 @@ padding: 4px;
       <width>75</width>
       <height>75</height>
      </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
     </property>
     <property name="flat">
      <bool>false</bool>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnHallway">
-    <property name="geometry">
-     <rect>
-      <x>380</x>
-      <y>150</y>
-      <width>311</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: #E7DFDD;
-border-style: outset;
-border-radius: 15px;</string>
-    </property>
-    <property name="text">
-     <string/>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btnDanaOffice">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>200</y>
+      <x>230</x>
+      <y>10</y>
       <width>151</width>
-      <height>121</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(231, 223, 221);
-border-style: outset;
-border-radius: 15px;</string>
+     <string notr="true">QPushButton{
+	background-color: #161616;
+	border-width: 3px;
+	border-color: #3a3a3a;
+	border-style: outset;
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	background-color: #ffffff;
+}
+
+QPushButton:checked{
+	background-color: #ffffff;
+	border-style: inset;
+	border-color: #9557c6;
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -173,21 +216,38 @@ border-radius: 15px;</string>
       <width>75</width>
       <height>75</height>
      </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="btnDanielOffice">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>200</y>
+      <x>230</x>
+      <y>230</y>
       <width>151</width>
-      <height>121</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #E7DFDD;
-border-style: outset;
-border-radius: 15px;</string>
+     <string notr="true">QPushButton{
+	background-color: #161616;
+	border-width: 3px;
+	border-color: #3a3a3a;
+	border-style: outset;
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	background-color: #ffffff;
+}
+
+QPushButton:checked{
+	background-color: #ffffff;
+	border-style: inset;
+	border-color: #9557c6;
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -197,21 +257,38 @@ border-radius: 15px;</string>
       <width>75</width>
       <height>75</height>
      </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="btnStudio">
     <property name="geometry">
      <rect>
-      <x>540</x>
-      <y>20</y>
+      <x>230</x>
+      <y>120</y>
       <width>151</width>
-      <height>121</height>
+      <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #E7DFDD;
-border-style: outset;
-border-radius: 15px;</string>
+     <string notr="true">QPushButton{
+	background-color: #161616;
+	border-width: 3px;
+	border-color: #3a3a3a;
+	border-style: outset;
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	background-color: #ffffff;
+}
+
+QPushButton:checked{
+	background-color: #ffffff;
+	border-style: inset;
+	border-color: #9557c6;
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -222,20 +299,37 @@ border-radius: 15px;</string>
       <height>75</height>
      </size>
     </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QPushButton" name="btnAllOn">
     <property name="geometry">
      <rect>
-      <x>620</x>
+      <x>610</x>
       <y>360</y>
       <width>151</width>
       <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #E7DFDD;
-border-style: outset;
-border-radius: 15px;</string>
+     <string notr="true">QPushButton{
+	background-color: #161616;
+	border-width: 3px;
+	border-color: #3a3a3a;
+	border-style: outset;
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	background-color: #ffffff;
+}
+
+QPushButton:checked{
+	background-color: #ffffff;
+	border-style: inset;
+	border-color: #9557c6;
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -245,6 +339,9 @@ border-radius: 15px;</string>
       <width>75</width>
       <height>75</height>
      </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="btnAllOff">
@@ -252,14 +349,28 @@ border-radius: 15px;</string>
      <rect>
       <x>420</x>
       <y>360</y>
-      <width>161</width>
+      <width>151</width>
       <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #E7DFDD;
-border-style: outset;
-border-radius: 15px;</string>
+     <string notr="true">QPushButton{
+	background-color: #161616;
+	border-width: 3px;
+	border-color: #3a3a3a;
+	border-style: outset;
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	background-color: #ffffff;
+}
+
+QPushButton:checked{
+	background-color: #ffffff;
+	border-style: inset;
+	border-color: #9557c6;
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -270,20 +381,37 @@ border-radius: 15px;</string>
       <height>75</height>
      </size>
     </property>
+    <property name="checkable">
+     <bool>false</bool>
+    </property>
    </widget>
    <widget class="QPushButton" name="btnAway">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>40</x>
       <y>360</y>
       <width>151</width>
       <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #E7DFDD;
-border-style: outset;
-border-radius: 15px;</string>
+     <string notr="true">QPushButton{
+	background-color: #161616;
+	border-width: 3px;
+	border-color: #3a3a3a;
+	border-style: outset;
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	background-color: #ffffff;
+}
+
+QPushButton:checked{
+	background-color: #ffffff;
+	border-style: inset;
+	border-color: #9557c6;
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -293,6 +421,9 @@ border-radius: 15px;</string>
       <width>75</width>
       <height>75</height>
      </size>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="Line" name="line">
@@ -305,13 +436,13 @@ border-radius: 15px;</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: rgb(152, 129, 152)</string>
+     <string notr="true">color: #3a3a3a</string>
     </property>
     <property name="frameShadow">
      <enum>QFrame::Plain</enum>
     </property>
     <property name="lineWidth">
-     <number>2</number>
+     <number>1</number>
     </property>
     <property name="orientation">
      <enum>Qt::Horizontal</enum>
@@ -336,16 +467,30 @@ border-radius: 15px;</string>
    <widget class="QPushButton" name="btnParty">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>230</x>
       <y>360</y>
-      <width>161</width>
+      <width>151</width>
       <height>91</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: #E7DFDD;
-border-style: outset;
-border-radius: 15px;</string>
+     <string notr="true">QPushButton{
+	background-color: #161616;
+	border-width: 3px;
+	border-color: #3a3a3a;
+	border-style: outset;
+	border-radius: 15px;
+}
+
+QPushButton:pressed{
+	background-color: #ffffff;
+}
+
+QPushButton:checked{
+	background-color: #ffffff;
+	border-style: inset;
+	border-color: #9557c6;
+}</string>
     </property>
     <property name="text">
      <string/>
@@ -359,6 +504,105 @@ border-radius: 15px;</string>
     <property name="checkable">
      <bool>true</bool>
     </property>
+    <property name="checked">
+     <bool>false</bool>
+    </property>
+   </widget>
+   <widget class="Line" name="line_2">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>0</y>
+      <width>21</width>
+      <height>331</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #3a3a3a</string>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <property name="lineWidth">
+     <number>1</number>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="brightnessSlider">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>260</y>
+      <width>361</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QSlider::groove:horizontal {
+    height: 8px; /* the groove expands to the size of the slider by default. by giving it a height, it has a fixed size */
+    background: #3f3f3f;
+    margin: 2px 0;
+}
+
+QSlider::groove:horizontal:disabled {
+	background: #313131;
+	border-radius: 2px;
+	border-style: none;
+}
+
+QSlider::add-page {
+	background: #3f3f3f;
+	border-radius: 3px;
+}
+
+QSlider::sub-page {
+	background: #f0f0f0;
+	border-radius: 3px;
+}
+
+QSlider::sub-page:disabled {
+	background: #6d6d6d;
+	border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+    background: #9557c6;
+    width: 20px;
+
+    margin: -20px 0; /* handle is placed by default on the contents rect of the groove. Expand outside the groove */
+    border-radius: 3px;
+}
+
+QSlider::handle:horizontal:disabled {
+	 background: #3a3a3a;
+}</string>
+    </property>
+    <property name="minimum">
+     <number>1</number>
+    </property>
+    <property name="maximum">
+     <number>254</number>
+    </property>
+    <property name="tracking">
+     <bool>true</bool>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+    <property name="invertedAppearance">
+     <bool>false</bool>
+    </property>
+    <property name="invertedControls">
+     <bool>false</bool>
+    </property>
+    <property name="tickPosition">
+     <enum>QSlider::NoTicks</enum>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -367,7 +611,7 @@ border-radius: 15px;</string>
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

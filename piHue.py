@@ -11,13 +11,19 @@ b.connect()
 
 allLights = b.get_light_objects('name')
 
-
 kitchenLights = [   allLights['K1'],
                     allLights['K2'],
                     allLights['K3'],
                     allLights['K4'] ]
 
 livingRoomLights = [ allLights['Lamp'] ]
+
+lightDict = {
+    "btnKitchen" : [allLights['K1'], allLights['K2'], allLights['K3'], allLights['K4']],
+    "btnLivingRoom" : [ allLights['Lamp'] ]
+    }
+
+activeLights = []
 
 w = Weather()
 
@@ -26,12 +32,6 @@ class MainView(QtWidgets.QMainWindow):
         super(MainView, self).__init__()
         self.statusBar().setSizeGripEnabled(False)
         self.setFixedSize(self.sizeHint())
-
-        """bgImg = QImage("./img/bg.png")
-        sImage = bgImg.scaled(QSize(800,480))
-        palette = QPalette()
-        palette.setBrush(10, QBrush(sImage))                     
-        self.setPalette(palette)"""
         
         self.shortcut = QShortcut(QKeySequence("Ctrl+Q"), self)
         self.shortcut.activated.connect(self.close)
@@ -44,17 +44,23 @@ class MainView(QtWidgets.QMainWindow):
                 
             
         #Button Connections
-		
+        
         self.btnClose = self.findChild(QtWidgets.QPushButton, 'btnClose')
         self.btnClose.clicked.connect(self.close)
-		
+        
         self.btnLivingRoom = self.findChild(QtWidgets.QPushButton, 'btnLivingRoom')
-        self.btnLivingRoom.setIcon(QtGui.QIcon('./icons/livingroom.png'))
-        self.btnLivingRoom.clicked.connect(lambda: self.roomSettings(livingRoomLights))
+        lrIcon = QIcon()
+        lrIcon.addPixmap(QPixmap('./icons/livingroom'), QIcon.Normal, QIcon.On)
+        lrIcon.addPixmap(QPixmap('./icons/livingroom_off'), QIcon.Normal, QIcon.Off)
+        self.btnLivingRoom.setIcon(lrIcon)
+        self.btnLivingRoom.clicked.connect(self.activeRooms)
         
         self.btnKitchen = self.findChild(QtWidgets.QPushButton, 'btnKitchen')
-        self.btnKitchen.setIcon(QtGui.QIcon('./icons/kitchen.png'))
-        self.btnKitchen.clicked.connect(lambda: self.roomSettings(kitchenLights))
+        kitchenIcon = QIcon()
+        kitchenIcon.addPixmap(QPixmap('./icons/fridge'), QIcon.Normal, QIcon.On)
+        kitchenIcon.addPixmap(QPixmap('./icons/fridge_off'), QIcon.Normal, QIcon.Off)
+        self.btnKitchen.setIcon(kitchenIcon)
+        self.btnKitchen.clicked.connect(self.activeRooms)
         
         self.btnAllOn = self.findChild(QtWidgets.QPushButton, 'btnAllOn')
         self.btnAllOn.setIcon(QtGui.QIcon('./icons/lightOn.png'))
@@ -65,35 +71,60 @@ class MainView(QtWidgets.QMainWindow):
         self.btnAllOff.clicked.connect(self.allLightsOff)
         
         self.btnAway = self.findChild(QtWidgets.QPushButton, 'btnAway')
-        self.btnAway.setIcon(QtGui.QIcon('./icons/away.png'))
+        awayIcon = QIcon()
+        awayIcon.addPixmap(QPixmap('./icons/away'), QIcon.Normal, QIcon.On)
+        awayIcon.addPixmap(QPixmap('./icons/away_off'), QIcon.Normal, QIcon.Off)
+        self.btnAway.setIcon(awayIcon)
+        self.btnKitchen.clicked.connect(self.away)
         
         self.btnBedroom = self.findChild(QtWidgets.QPushButton, 'btnBedroom')
-        self.btnBedroom.setIcon(QtGui.QIcon('./icons/bed.png'))
+        bedroomIcon = QIcon()
+        bedroomIcon.addPixmap(QPixmap('./icons/bed'), QIcon.Normal, QIcon.On)
+        bedroomIcon.addPixmap(QPixmap('./icons/bed_off'), QIcon.Normal, QIcon.Off)
+        self.btnBedroom.setIcon(bedroomIcon)
         
         self.btnStudio = self.findChild(QtWidgets.QPushButton, 'btnStudio')
-        self.btnStudio.setIcon(QtGui.QIcon('./icons/studio.png'))
+        studioIcon = QIcon()
+        studioIcon.addPixmap(QPixmap('./icons/studio'), QIcon.Normal, QIcon.On)
+        studioIcon.addPixmap(QPixmap('./icons/studio_off'), QIcon.Normal, QIcon.Off)
+        self.btnStudio.setIcon(studioIcon)
         self.btnStudio.clicked.connect(self.screenSaver)
         
         self.btnDanaOffice = self.findChild(QtWidgets.QPushButton, 'btnDanaOffice')
-        self.btnDanaOffice.setIcon(QtGui.QIcon('./icons/danaOffice.png'))
+        danaOfficeIcon = QIcon()
+        danaOfficeIcon.addPixmap(QPixmap('./icons/danaOffice'), QIcon.Normal, QIcon.On)
+        danaOfficeIcon.addPixmap(QPixmap('./icons/danaOffice_off'), QIcon.Normal, QIcon.Off)
+        self.btnDanaOffice.setIcon(danaOfficeIcon)
         #self.btnDanaOffice.clicked.connect(lambda: self.roomSettings(danaOfficeLights))
         
         self.btnDanielOffice = self.findChild(QtWidgets.QPushButton, 'btnDanielOffice')
-        self.btnDanielOffice.setIcon(QtGui.QIcon('./icons/danielOffice.png'))
+        danielOfficeIcon = QIcon()
+        danielOfficeIcon.addPixmap(QPixmap('./icons/danielOffice'), QIcon.Normal, QIcon.On)
+        danielOfficeIcon.addPixmap(QPixmap('./icons/danielOffice_off'), QIcon.Normal, QIcon.Off)
+        self.btnDanielOffice.setIcon(danielOfficeIcon)
         #self.btnDanielOffice.clicked.connect(lambda: self.roomSettings(danielOfficeLights))
         
         self.btnParty = self.findChild(QtWidgets.QPushButton, 'btnParty')
-        self.btnParty.setIcon(QtGui.QIcon('./icons/icons8-party-balloons-100.png'))
+        partyIcon = QIcon()
+        partyIcon.addPixmap(QPixmap('./icons/partymode'), QIcon.Normal, QIcon.On)
+        partyIcon.addPixmap(QPixmap('./icons/partymode_off'), QIcon.Normal, QIcon.Off)
+        self.btnParty.setIcon(partyIcon)
         self.btnParty.clicked[bool].connect(self.partyMode)
-        self.timer.start(300000)
-
-        for b in self.findChildren(QtWidgets.QPushButton):
-            b.setStyleSheet("QPushButton{background-color: #f3e9d2; border-radius: 15px;}"
-                "QPushButton:pressed{background-color: #c6dabf}")
         
+        self.brightnessSlider = self.findChild(QtWidgets.QSlider, 'brightnessSlider')
+        self.brightnessSlider.valueChanged.connect(self.changeBrightness)
+        
+        self.timer.start(300000)
         self.show()
         
-        
+    def changeBrightness(self):
+        for i in activeLights:
+            for l in i:
+                l.brightness = int(self.brightnessSlider.value())
+    
+    def away(self):
+        pass
+    
     def partyMode(self, checked):
 
         if checked:
@@ -106,10 +137,19 @@ class MainView(QtWidgets.QMainWindow):
             for l in b.lights:
                 l.effect = "none"
 
-    def roomSettings(self, currentLights):
+    def activeRooms(self):
         
-        self.dialog = RoomParams(self, currentLights)
-        self.dialog.show()
+        activeLights = []
+        for b in self.findChildren(QtWidgets.QPushButton):
+            if b.isChecked():
+                activeLights.append(lightDict[str(b.objectName())])
+                
+        if not activeLights:
+            self.brightnessSlider.setEnabled(False)
+        else:
+            self.brightnessSlider.setEnabled(True)
+        #self.dialog = RoomParams(self, currentLights)
+        #self.dialog.show()
     
     def allLightsOn(self):
         for l in b.lights:
@@ -140,7 +180,7 @@ class ScreenSaver(QtWidgets.QMainWindow):
         
         uic.loadUi("screenSaver.ui", self)
         self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-		
+        
         self.clockTimer = QTimer()
         self.clockTimer.timeout.connect(self.updateDateTime)
         self.clockTimer.start(60000)
