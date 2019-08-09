@@ -139,7 +139,8 @@ class MainView(QtWidgets.QMainWindow):
 
     def activeRooms(self):
         
-        activeLights = []
+        activeLights.clear()
+        
         for b in self.findChildren(QtWidgets.QPushButton):
             if b.isChecked():
                 activeLights.append(lightDict[str(b.objectName())])
