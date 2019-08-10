@@ -35,7 +35,7 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #114b5f;
+   <string notr="true">background-color: #161616;
 </string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -57,7 +57,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: #c6dabf</string>
+     <string notr="true">color: #ffffff</string>
     </property>
     <property name="text">
      <string>16:56</string>
@@ -71,7 +71,7 @@
      <rect>
       <x>50</x>
       <y>30</y>
-      <width>201</width>
+      <width>421</width>
       <height>51</height>
      </rect>
     </property>
@@ -82,7 +82,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: #88d498</string>
+     <string notr="true">color: #9557c6</string>
     </property>
     <property name="text">
      <string>Jul 26 2019</string>
@@ -107,7 +107,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: #c6dabf</string>
+     <string notr="true">color: #ffffff</string>
     </property>
     <property name="text">
      <string>87</string>
@@ -143,6 +143,9 @@
       <family>Montserrat</family>
       <pointsize>18</pointsize>
      </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: #ffffff</string>
     </property>
     <property name="text">
      <string/>
@@ -616,7 +619,7 @@
      </font>
     </property>
     <property name="styleSheet">
-     <string notr="true">color: #c6dabf</string>
+     <string notr="true">color: #ffffff</string>
     </property>
     <property name="text">
      <string/>
@@ -694,16 +697,11 @@
      <bool>true</bool>
     </property>
    </widget>
-   <zorder>lblWkFcstTemp3</zorder>
-   <zorder>lblWkFcstDay1</zorder>
-   <zorder>lblWkFcstTemp2</zorder>
-   <zorder>lblWkFcstDay5</zorder>
-   <zorder>lblWkFcstDay4</zorder>
-   <zorder>lblWkFcstTemp4</zorder>
-   <zorder>lblWkFcstTemp1</zorder>
-   <zorder>lblWkFcstDay3</zorder>
-   <zorder>lblWkFcstTemp5</zorder>
-   <zorder>lblWkFcstDay2</zorder>
+   <zorder>lblWkFcst5</zorder>
+   <zorder>lblWkFcst3</zorder>
+   <zorder>lblWkFcst1</zorder>
+   <zorder>lblWkFcst2</zorder>
+   <zorder>lblWkFcst4</zorder>
    <zorder>lblClock</zorder>
    <zorder>lblDate</zorder>
    <zorder>lblCurrentTemp</zorder>
@@ -717,12 +715,17 @@
    <zorder>lblDayFcstTime3</zorder>
    <zorder>lblDayFcstTime1</zorder>
    <zorder>lblDayFcstTime2</zorder>
-   <zorder>lblWkFcst1</zorder>
-   <zorder>lblWkFcst2</zorder>
-   <zorder>lblWkFcst3</zorder>
-   <zorder>lblWkFcst4</zorder>
-   <zorder>lblWkFcst5</zorder>
    <zorder>btnReturnToMain</zorder>
+   <zorder>lblWkFcstTemp2</zorder>
+   <zorder>lblWkFcstDay4</zorder>
+   <zorder>lblWkFcstDay2</zorder>
+   <zorder>lblWkFcstTemp3</zorder>
+   <zorder>lblWkFcstTemp5</zorder>
+   <zorder>lblWkFcstDay3</zorder>
+   <zorder>lblWkFcstDay5</zorder>
+   <zorder>lblWkFcstDay1</zorder>
+   <zorder>lblWkFcstTemp4</zorder>
+   <zorder>lblWkFcstTemp1</zorder>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
@@ -730,7 +733,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
   </widget>

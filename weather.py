@@ -62,6 +62,7 @@ class Weather(object):
 			for i in y:
 				if gmtime(i["dt"]).tm_hour == gmtime(y[-1]["dt"]).tm_hour and gmtime(i["dt"]).tm_mday != gmtime().tm_mday:
 					week_forecast.append(i)
+					print(i)
 					
 		return week_forecast
 				

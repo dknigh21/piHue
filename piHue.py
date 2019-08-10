@@ -197,7 +197,7 @@ class ScreenSaver(QtWidgets.QMainWindow):
         self.lblDate.setText(datetime.datetime.now().strftime("%b %d %Y"))
         
         self.lblClock = self.findChild(QtWidgets.QLabel, 'lblClock')
-        self.lblClock.setText(datetime.datetime.now().strftime("%-I:%M"))
+        self.lblClock.setText(datetime.datetime.now().strftime("%#I:%M"))
         
         self.lblDayFcst1 = self.findChild(QtWidgets.QLabel, 'lblDayFcst1')
         self.lblDayFcst2 = self.findChild(QtWidgets.QLabel, 'lblDayFcst2')
@@ -248,7 +248,7 @@ class ScreenSaver(QtWidgets.QMainWindow):
         self.close()
         
     def updateDateTime(self):
-        self.lblClock.setText(datetime.datetime.now().strftime("%-I:%M"))
+        self.lblClock.setText(datetime.datetime.now().strftime("%#I:%M"))
         self.lblDate.setText(datetime.datetime.now().strftime("%b %d %Y"))
         
     def updateWeather(self):
@@ -268,7 +268,7 @@ class ScreenSaver(QtWidgets.QMainWindow):
             temp_icon.loadFromData(w.getIconImage(current_forecast[i]["weather"][0]["icon"]))
             self.dayForecastIcons[i].setPixmap(QtGui.QPixmap(temp_icon))
             self.dayForecastTemps[i].setText(str(int(current_forecast[i]["main"]["temp"])) + u'\N{DEGREE SIGN}')
-            self.dayForecastTimes[i].setText(time.strftime("%-I %p", time.gmtime(current_forecast[i]["dt"])))
+            self.dayForecastTimes[i].setText(time.strftime("%#I %p", time.gmtime(current_forecast[i]["dt"])))
             
         current_weather_icon = QtGui.QImage()
         current_weather_icon.loadFromData(current_weather[2])
