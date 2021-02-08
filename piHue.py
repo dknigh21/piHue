@@ -117,13 +117,13 @@ class MainView(QtWidgets.QMainWindow):
         self.btnSelectedOn = self.findChild(QtWidgets.QPushButton, 'btnSelectedOn')
         selectedOnIcon = QIcon()
         selectedOnIcon.addPixmap(QPixmap('./icons/lightOn'), QIcon.Normal, QIcon.On)
-        selectedOnIcon.addPixmap(QPixmap('./icons/lightOn_off'), QIcon.Normal, QIcon.Off)
+        selectedOnIcon.addPixmap(QPixmap('./icons/lightOn_off'), QIcon.Disabled, QIcon.On)
         self.btnSelectedOn.setIcon(selectedOnIcon)
         
         self.btnSelectedOff = self.findChild(QtWidgets.QPushButton, 'btnSelectedOff')
         selectedOffIcon = QIcon()
         selectedOffIcon.addPixmap(QPixmap('./icons/lightOff'), QIcon.Normal, QIcon.On)
-        selectedOffIcon.addPixmap(QPixmap('./icons/lightOff_off'), QIcon.Normal, QIcon.Off)
+        selectedOffIcon.addPixmap(QPixmap('./icons/lightOff_off'), QIcon.Disabled, QIcon.On)
         self.btnSelectedOff.setIcon(selectedOffIcon)
         
         
@@ -160,8 +160,12 @@ class MainView(QtWidgets.QMainWindow):
                 
         if not activeLights:
             self.brightnessSlider.setEnabled(False)
+            self.btnSelectedOn.setEnabled(False)
+            self.btnSelectedOff.setEnabled(False)
         else:
             self.brightnessSlider.setEnabled(True)
+            self.btnSelectedOn.setEnabled(True)
+            self.btnSelectedOff.setEnabled(True)
         #self.dialog = RoomParams(self, currentLights)
         #self.dialog.show()
     
@@ -214,7 +218,7 @@ class ScreenSaver(QtWidgets.QMainWindow):
         self.lblDate.setText(datetime.datetime.now().strftime("%b %d %Y"))
         
         self.lblClock = self.findChild(QtWidgets.QLabel, 'lblClock')
-        self.lblClock.setText(datetime.datetime.now().strftime("%-I:%M"))
+        self.lblClock.setText(datetime.datetime.now().strftime("%#I:%M"))
         
         self.lblDayFcst1 = self.findChild(QtWidgets.QLabel, 'lblDayFcst1')
         self.lblDayFcst2 = self.findChild(QtWidgets.QLabel, 'lblDayFcst2')
@@ -265,7 +269,7 @@ class ScreenSaver(QtWidgets.QMainWindow):
         self.close()
         
     def updateDateTime(self):
-        self.lblClock.setText(datetime.datetime.now().strftime("%-I:%M"))
+        self.lblClock.setText(datetime.datetime.now().strftime("%#I:%M"))
         self.lblDate.setText(datetime.datetime.now().strftime("%b %d %Y"))
         
     def updateWeather(self):
@@ -285,7 +289,7 @@ class ScreenSaver(QtWidgets.QMainWindow):
             temp_icon.loadFromData(w.getIconImage(current_forecast[i]["weather"][0]["icon"]))
             self.dayForecastIcons[i].setPixmap(QtGui.QPixmap(temp_icon))
             self.dayForecastTemps[i].setText(str(int(current_forecast[i]["main"]["temp"])) + u'\N{DEGREE SIGN}')
-            self.dayForecastTimes[i].setText(time.strftime("%-I %p", time.gmtime(current_forecast[i]["dt"])))
+            self.dayForecastTimes[i].setText(time.strftime("%#I %p", time.gmtime(current_forecast[i]["dt"])))
             
         current_weather_icon = QtGui.QImage()
         current_weather_icon.loadFromData(current_weather[2])

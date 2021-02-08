@@ -769,6 +769,9 @@ QPushButton:checked{
     </property>
    </widget>
    <widget class="QPushButton" name="btnSelectedOff">
+    <property name="enabled">
+     <bool>false</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>680</x>
