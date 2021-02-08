@@ -6,7 +6,7 @@ from phue import Bridge
 import sys, time, datetime, requests
 from weather import Weather
 
-b = Bridge("192.168.50.175")
+b = Bridge("BRIDGE_IP_ADDRESS")
 b.connect()
 
 allLights = b.get_light_objects('name')
@@ -119,12 +119,14 @@ class MainView(QtWidgets.QMainWindow):
         selectedOnIcon.addPixmap(QPixmap('./icons/lightOn'), QIcon.Normal, QIcon.On)
         selectedOnIcon.addPixmap(QPixmap('./icons/lightOn_off'), QIcon.Disabled, QIcon.On)
         self.btnSelectedOn.setIcon(selectedOnIcon)
+        self.btnSelectedOn.clicked.connect(lambda: self.allLightsOn(False))
         
         self.btnSelectedOff = self.findChild(QtWidgets.QPushButton, 'btnSelectedOff')
         selectedOffIcon = QIcon()
         selectedOffIcon.addPixmap(QPixmap('./icons/lightOff'), QIcon.Normal, QIcon.On)
         selectedOffIcon.addPixmap(QPixmap('./icons/lightOff_off'), QIcon.Disabled, QIcon.On)
         self.btnSelectedOff.setIcon(selectedOffIcon)
+        self.btnSelectedOff.clicked.connect(lambda: self.allLightsOff(False))
         
         
         self.timer.start(300000)
@@ -175,9 +177,11 @@ class MainView(QtWidgets.QMainWindow):
                 if not l.on:
                     l.on = True
         else:
+            self.btnSelectedOff.setChecked(False)
             for l in activeLights:
-                if not l.on:
-                    l.on = True
+                for i in l:
+                    if not i.on:
+                        i.on = True
                 
     def allLightsOff(self, all):
         if all:
@@ -185,9 +189,11 @@ class MainView(QtWidgets.QMainWindow):
                 if l.on:
                     l.on = False
         else:
+            self.btnSelectedOn.setChecked(False)
             for l in activeLights:
-                if l.on:
-                    l.on = False
+                for i in l:
+                    if i.on:
+                        i.on = False
     
     def screenSaver(self):
         self.timer.stop()
@@ -296,54 +302,6 @@ class ScreenSaver(QtWidgets.QMainWindow):
         
         self.lblCurrentTemp.setText(current_weather[0])
         self.lblWeatherIcon.setPixmap(QtGui.QPixmap(current_weather_icon))
-
-
-class RoomParams(QtWidgets.QMainWindow):
-    def __init__(self, parent=None, currentLights=None):
-        super(RoomParams, self).__init__()
-        
-        bgImg = QImage("./img/bg.png")
-        
-        sImage = bgImg.scaled(QSize(800,480))
-        palette = QPalette()
-        palette.setBrush(10, QBrush(sImage))                     
-        self.setPalette(palette)
-        
-        uic.loadUi("roomParams.ui", self)
-        self.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        
-        self.currentLights = currentLights
-        
-        self.btnReturn = self.findChild(QtWidgets.QPushButton, 'btnReturn')
-        self.btnReturn.setIcon(QtGui.QIcon('./icons/back2.png'))
-        self.btnReturn.clicked.connect(self.returnToMain)
-        
-        self.brightnessSlider = self.findChild(QtWidgets.QSlider, 'brightnessSlider')
-        self.brightnessSlider.valueChanged.connect(self.changeBrightness)
-        
-        self.btnOn = self.findChild(QtWidgets.QPushButton, 'btnOn')
-        self.btnOn.setIcon(QtGui.QIcon('./icons/lightOn.png'))
-        self.btnOn.clicked.connect(self.lightsOn)
-        
-        self.btnOff = self.findChild(QtWidgets.QPushButton, 'btnOff')
-        self.btnOff.setIcon(QtGui.QIcon('./icons/lightOff.png'))
-        self.btnOff.clicked.connect(self.lightsOff)
-        
-    def changeBrightness(self):
-        for l in self.currentLights:
-            l.brightness = int(self.brightnessSlider.value())
-        
-    def returnToMain(self):
-        self.close()
-
-    def lightsOn(self):
-        for l in self.currentLights:
-            l.on = True
-
-    def lightsOff(self):
-        for l in self.currentLights:
-            l.on = False
-        
 
 
 app = QtWidgets.QApplication(sys.argv)
